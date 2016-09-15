@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'/>
+        <title>Ancor test case page</title>
+        <link rel='stylesheet' type='text/css' href='build/styles/styles.css'>
+        <script type="text/javascript" src='build/js/jquery-3.1.0.min.js'></script>   
+        <script src='build/js/app.js'></script>
+    </head>
+    <body>
+        <header>
+            <div class='topBar'>
+                <div class='addProductTitle'>Добавить продукт</div>
+
+                    <div class='product'>
+                        <label for='productName'>Продукт</label>
+                        <input type='text' id='productName'>
+                    </div>
+                    <div class='price'>
+                        <label for='productPrice'>Цена</label>
+                        <input type='text' id='productPrice'>
+                    </div>
+                    <div class='addButton'>
+                        <button type='button'>Добавить</button>
+                    </div>
+
+            </div>
+        </header>
+
+        <hr>
+
+        <div class='basket'>
+            <div class='basketTitle'>Корзина</div>
+            <div class= 'tableWrapper'>
+                <table class='productTable'>
+                    <thead>
+                        <tr>
+                            <th>Продукт</th>
+                            <th>Цена</th>
+                            <th>Цена со скидкой</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class='addSale'>
+                <div class='sale'>
+                    <label for='off'>Применить скидку</label>
+                    <input type='text' id='off'>
+                </div>
+                <div class='currency'>рублей</div>
+                <div class='applyButton'>
+                    <button type='button'>Применить</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

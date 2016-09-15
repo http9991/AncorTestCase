@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+input {
+	border: 3px solid black;
+}
+button {
+	border: 3px solid black;
+	padding: 1px 7px 1px 7px;
+	border-radius: 3px;
+	background-color: #dadada;
+	font-weight: 700;
+	float: left;
+	margin-left: 5px;
+}
+
+div[class$="Title"] {
+	font-size: 30px;
+}
+div.basket {
+	position: relative;
+	width: 500px;
+	padding: 5px;
+	display: inline-block;
+}
+div.topBar {
+	position: relative;
+	width: 500px;
+	padding: 5px;
+	display: inline-block;
+}
+
+div.topBar  .product {
+	float: left;
+}
+div.topBar  .price {
+	float: left;
+	margin-left: 5px;
+}
+div.addSale {
+	position: relative;
+	width: 500px;
+	display: inline-block;
+}
+div.addSale input {
+	width: 30px;
+}
+div.addSale .sale {
+	float: left;
+}
+div.addSale .currency {
+	float: left;
+	margin-left: 5px;
+}
+
+
+table { 
+	width: 100%; 
+	border: 2px solid black;
+	border-collapse: collapse;
+	margin-bottom: 30px;
+}
+th { 
+	text-align: left;
+	background: #ccc;
+	padding: 5px;
+	border: 1px solid black;
+}
+td { 
+	padding: 5px;
+	border: 1px solid black;
+}
+
