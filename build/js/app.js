@@ -34,6 +34,10 @@ $(document).ready(function(){
     var totalPrice = priceArr.reduce(function(sum, current) {
       return sum + current;
     });
+    if (totalPrice < off) {
+      alert('Скидка больше цены!');
+      return;
+    }
     var dynamicSale = 0;
     var biggestPrice = {
       price: 0,
