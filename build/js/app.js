@@ -56,7 +56,6 @@ $(document).ready(function(){
     });
     
     if(+(dynamicSale) !== 0){
-      console.log(+(biggestPrice.element.nextSibling.innerHTML) - (Math.round(dynamicSale*100)/100));
       biggestPrice.element.nextSibling.innerHTML = (+(biggestPrice.element.nextSibling.innerHTML) - (Math.round(dynamicSale*100)/100)).toFixed(2);
     }
   }
