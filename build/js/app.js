@@ -1,38 +1,39 @@
-$(document).ready(function(){
+$(document).ready(function() {
   var priceArr = [];
-  $('.addButton').on('click', function(){
+  $('.addButton').on('click', function() {
     var productName = $('#productName').val().trim();
-    var productPrice = +($('#productPrice').val());
+    var productPrice = Math.floor(+($('#productPrice').val()) * 100) / 100;
     $('#productName').val('');
     $('#productPrice').val('');
-    if(productName !== '' && isNumeric(productPrice) && productPrice !== 0){
+    if (productName !== '' && isNumeric(productPrice) && productPrice !== 0) {
       addProduct(productName, productPrice);
-    }
-    else{
+    } else {
       alert('Неправильный формат добавления товара!');
     }
   });
-  $('.applyButton').on('click', function(){
+  $('.applyButton').on('click', function() {
     var off = $('#off').val();
-    if(isNumeric(off) && off !== 0){
+    if (isNumeric(off) && off !== 0 && (off % 1 === 0)) {
       calculateOff(off);
-    }
-    else{
+    } else {
       alert('Неправильный формат скидки!');
     }
   });
-  function isNumeric(n){
+
+  function isNumeric(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
   }
-  function addProduct(productName, productPrice){
+
+  function addProduct(productName, productPrice) {
     $('.productTable > tbody:last-child').append('<tr><td>' + productName + '</td><td class="fullPrice">' + productPrice + '</td><td>' + '?????' + '</td></tr>');
     priceArr.push(productPrice);
     var off = $('#off').val();
     calculateOff(off);
   }
-  function calculateOff(off){
+
+  function calculateOff(off) {
     var totalPrice = priceArr.reduce(function(sum, current) {
-      return sum + current;
+      return +(sum) + (+current);
     });
     if (totalPrice < off) {
       alert('Скидка больше цены!');
@@ -42,24 +43,19 @@ $(document).ready(function(){
     var biggestPrice = {
       price: 0,
     };
-    $('.fullPrice').each(function(){
+    $('.fullPrice').each(function() {
       var currentPrice = +(this.innerHTML);
-      if(biggestPrice.price <= currentPrice){
+      if (biggestPrice.price <= currentPrice) {
         biggestPrice.price = currentPrice;
         biggestPrice.element = this;
       }
       var currentSale = (currentPrice / totalPrice) * off;
-      if (currentSale % 1 === 0){
-        this.nextSibling.innerHTML = currentPrice - currentSale;
-        dynamicSale += currentSale;
-      }
-      else{
-        this.nextSibling.innerHTML = currentPrice - Math.floor(currentSale);
-        dynamicSale += Math.floor(currentSale);
-      }
+      dynamicSale += currentSale - Math.round(currentSale * 100) / 100;
+      this.nextSibling.innerHTML = currentPrice - Math.round(currentSale * 100) / 100;
     });
-    if(+(dynamicSale) !== +(off)){
-      biggestPrice.element.nextSibling.innerHTML = +(biggestPrice.element.nextSibling.innerHTML) - (+(off - dynamicSale));
+
+    if (+(dynamicSale) !== 0) {
+      biggestPrice.element.nextSibling.innerHTML = (+(biggestPrice.element.nextSibling.innerHTML) - (Math.round(dynamicSale * 100) / 100)).toFixed(2);
     }
   }
 });
